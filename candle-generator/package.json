@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsnd --transpile-only src/index.ts",
-    "pm2": "pm2 start pm2.json"
+    "pm2": "pm2 start pm2.json",
+    "pm2-delete": "pm2 delete candle-generator"
   },
   "dependencies": {
     "amqplib": "^0.10.3",
