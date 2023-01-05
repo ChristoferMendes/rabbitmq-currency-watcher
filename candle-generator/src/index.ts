@@ -17,9 +17,9 @@ const readMarketPrice = async () => {
 
 const generateCandles = async () => {
 
-  const messageChannge = await createMessageChannel();
+  const messageChannel = await createMessageChannel();
 
-  if (!messageChannge) return;
+  if (!messageChannel) return;
 
   while(true) {
     const loopTimes = Period.ONE_MINUTE / Period.TEN_SECONDS;
@@ -47,7 +47,7 @@ const generateCandles = async () => {
 
     const QUERY_NAME = process.env.QUEUE_NAME as string;
 
-    messageChannge.sendToQueue(QUERY_NAME, Buffer.from(candleJson))
+    messageChannel.sendToQueue(QUERY_NAME, Buffer.from(candleJson))
     console.log('candle sent to queue')
   }
 }
