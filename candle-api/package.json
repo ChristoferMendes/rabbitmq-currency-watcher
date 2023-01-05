@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "tsnd --transpile-only src/server.ts",
     "build": "tsc -p .",
-    "pm2": "pm2 start build/server.js"
+    "pm2": "pm2 start pm2.json",
+    "pm2-delete": "pm2 delete candle-api"
   },
   "dependencies": {
     "amqplib": "^0.10.3",

@@ -1,0 +1,7 @@
+{
+  "apps": [{
+    "name": "candle-api",
+    "script": "node",
+    "args": "build/server.js"
+  }]
+}
