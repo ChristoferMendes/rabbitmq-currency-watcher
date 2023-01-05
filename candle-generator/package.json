@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd --transpile-only src/index.ts"
+    "dev": "tsnd --transpile-only src/index.ts",
+    "pm2": "pm2 start buid/index.js"
   },
   "dependencies": {
     "amqplib": "^0.10.3",
