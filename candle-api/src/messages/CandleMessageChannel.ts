@@ -15,10 +15,13 @@ export default class CandleMessageChannel {
 
   constructor(server: http.Server) {
     this._candleController = new CandleController();
-    this._io = new Server(server, this._serverConfig());
+    this._io = new Server(server, {
+      cors: {
+        origin: '*'
+      }
+    });
     this._io.on('connection', () => console.log('Web socket connection created'))
     this._channel = undefined;
-
 
   }
 
@@ -27,6 +30,7 @@ export default class CandleMessageChannel {
       const connection = await connect(process.env.AMQP_SERVER as string)
       this._channel = await connection.createChannel();
       this._channel.assertQueue(process.env.QUEUE_NAME as string)
+      console.log('connected to RabbitMQ')
     } catch (err) {
       console.log('Connection to RabbitMQ failed')
       console.log(err)
@@ -36,9 +40,10 @@ export default class CandleMessageChannel {
   async consumeMessages() {
     await this._createMessageChannel();
     if (!this._channel) return;
-    
 
+    
     this._channel?.consume(process.env.QUEUE_NAME as string, async (msg) => {
+     
       if (!msg) return;
       const candleObj = JSON.parse(msg.content.toString())
       console.log('Message received');

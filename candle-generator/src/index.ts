@@ -35,7 +35,7 @@ const generateCandles = async () => {
       console.log('====================================');
       console.log(`Market price #${i + 1} of ${loopTimes}`);
       console.log('====================================');
-      await new Promise(resolve   => setTimeout(resolve, Period.TEN_SECONDS))
+      await new Promise(resolve => setTimeout(resolve, Period.TEN_SECONDS))
     }
 
     candle.closeCandle();

@@ -6,5 +6,10 @@ export const connectToMongoDb = async () => {
 
   const MONGODB_CONNECTION_URL = process.env.MONGODB_CONNECTION_URL as string;
 
-  await connect(MONGODB_CONNECTION_URL);
+  try {
+    await connect(MONGODB_CONNECTION_URL);
+    console.log('connected to mongodb')
+  } catch (erro) {
+    console.log('mongodb connection error', erro)
+  }
 }

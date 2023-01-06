@@ -6,6 +6,6 @@ const candleController = new CandleController();
 
 candleRouter.get('/:quantity', async (req, res) => {
   const quantity = parseInt(req.params.quantity);
-  const candles = await candleController.findLastCandles(quantity)
+  const candles = await candleController.findLastCandles(quantity ?? 0)
   return res.status(200).json(candles)
 })
